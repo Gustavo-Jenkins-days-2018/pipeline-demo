@@ -22,6 +22,7 @@ pipeline {
         echo "Continuing with deployment"
       }
     }
+  }
   environment {
     MY_NAME = 'Mary'
     TEST_USER = credentials('test-user')
