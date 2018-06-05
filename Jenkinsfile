@@ -9,6 +9,10 @@ pipeline {
       MY_NAME = 'Gustavo'
       TEST_USER = credentials('gterraciano')
    }
+  parameters {
+      string(name: 'Name', defaultValue: 'whoever you are', 
+	     description: 'Who should I say hi to?')
+   }
   stages {
     stage('say Hello') {
       steps {
