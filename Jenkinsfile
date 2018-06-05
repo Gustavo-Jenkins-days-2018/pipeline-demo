@@ -7,7 +7,7 @@ pipeline {
   }
   environment {
       MY_NAME = 'Gustavo'
-      TEST_USER = credentials('test-user')
+      TEST_USER = credentials('gterraciano')
    }
   stages {
     stage('say Hello') {
