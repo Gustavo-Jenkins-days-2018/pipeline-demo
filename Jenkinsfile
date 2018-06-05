@@ -7,7 +7,7 @@ pipeline {
   }
   environment {
       MY_NAME = 'Gustavo'
-      TEST_USER = credentials('gterraciano')
+      TEST_USER = credentials('test-user')
    }
   parameters {
       string(name: 'Name', defaultValue: 'whoever you are', 
@@ -16,7 +16,8 @@ pipeline {
   stages {
     stage('say Hello') {
       steps {
-        echo "Hello ${MY_NAME}!"
+        echo "Env value: Hello ${MY_NAME}!"
+	echo "HParam value: ello ${params.Name}!"
         echo "${TEST_USER_USR}"
         echo "${TEST_USER_PSW}"
         sh 'java -version'
