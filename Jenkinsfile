@@ -1,29 +1,22 @@
 pipeline {
   agent {
-    node {
-      label 'jdk8'
-    }
-
+    label 'jdk8'
   }
-  environment {
-      MY_NAME = 'Gustavo'
-      TEST_USER = credentials('test-user')
-   }
-  parameters {
-      string(name: 'Name:', defaultValue: 'Enter your first name', 
-	     description: 'Who should I say hi to?')
-   }
   stages {
-    stage('say Hello') {
+    stage('Say Hello') {
       steps {
-        echo "Env value: Hello ${MY_NAME}!"
-	echo
-	echo "Param value: Hello ${params.Name}!"
-	echo
+        echo "Hello ${params.Name}!"
+        sh 'java -version'
         echo "${TEST_USER_USR}"
         echo "${TEST_USER_PSW}"
-        sh 'java -version'
       }
     }
+  }
+  environment {
+    MY_NAME = 'Mary'
+    TEST_USER = credentials('test-user')
+  }
+  parameters {
+    string(name: 'Name', defaultValue: 'whoever you are', description: 'Who should I say hi to?')
   }
 }
